@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Basic AR.js Example</title>
+
+	<!-- Include A-Frame and AR.js libraries -->
+	<!-- A-Frame is a framework for building 3D/AR/VR experiences on the web -->
+	<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+	<!-- AR.js extends A-Frame to enable augmented reality features -->
+	<script src="https://rawcdn.githack.com/AR-js-org/AR.js/3.3.2/aframe/build/aframe-ar.js"></script>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+	<!-- a-scene is the root element for an A-Frame scene. The 'embedded' attribute allows it to be displayed inline in the page. -->
+	<!-- The 'arjs' attribute enables AR.js functionality within the scene. -->
+	<a-scene embedded arjs>
+
+		<!-- a-marker defines the AR marker that triggers the display of 3D content -->
+		<!-- type="pattern" specifies that this marker is a pattern-based marker (e.g., Hiro marker) -->
+		<!-- url points to the .patt file that contains the marker pattern data -->
+		<a-marker type="pattern"
+			url="https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/pattern-files/pattern-hiro.patt">
+
+			<!-- a-box is an A-Frame primitive that defines a 3D box. It will appear when the marker is detected -->
+			<!-- position defines the x, y, z coordinates of the box relative to the marker -->
+			<!-- material="color: blue;" sets the color of the box to blue -->
+
+			<a-entity gltf-model="url(https://modelviewer.dev/shared-assets/models/Astronaut.glb)"
+			scale="0.75 0.75 0.75" position="0 -0.5 0" rotation="-45 0 0"
+      animation="property: rotation; dur: 3000; to: -45 360 0; startEvents: click"></a-entity>
+
+	   <a-image
+		 src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg"
+		 position="0 0.5 0" width="1" height="1" rotation="90 180 0"
+     animation="property: scale; dur: 1000; to: 2 2 2; startEvents: click"></a-image>
+
+
+	  <a-plane postion="-1 0 0" rotation="-90 0 0" width="2" height="2" color="#7BC8A4"
+    animation="property: color; dur: 1000; to:#FF0000; startEvents: click"></a-plane>
+
+		<a-video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" position="0 1 0" width="1"
+			height="0.5" rotation="90, 180, 0"
+      animation="property: position; dur: 1000; to: 0 2 0; startEvents: click"></a-video>
+		
+		<a-text value="Hello AR!" position="0 -0.5 0" color=#000000 width=4 rotation="-90 0 0 "
+    animation="property: width; dur: 500; to: 8; startEvents: click"></a-text>
+
+		</a-marker>
+
+		<!-- a-entity camera is the virtual camera that captures and displays the scene -->
+		<!-- In AR, this represents the viewpoint of the user's device camera -->
+		<a-entity camera></a-entity>
+    <a-cursor></a-cursor>
+	</a-scene>
+</body>
+
+</html>
